@@ -4,6 +4,7 @@ class CreateCategories < ActiveRecord::Migration[6.0]
       t.string :name
       t.boolean :active_status, default: true
       t.boolean :visible_homepage, default: true
+      t.integer :subcategory, null: true, index: true
 
       t.timestamps
     end
