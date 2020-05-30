@@ -15,17 +15,16 @@ RSpec.describe Product, type: :model do
 
     product.save
 
-    expect((Product.find_by email: 'test@test.com').count).to eq(2)
+    expect(product.user.email).to eq("test@test.com")
   end
 
   it "can be linked to a category" do
+    category = Category.create(name: "Filled")
+    product = Product.new(name: "Cookie")
 
+    product.category = category
+    product.save
+
+    expect(product.category.name).to eq("Filled")
   end
-
-  it "the category can be accessed through itself" do
-  end
-
-  it "the user can be accessed through itself" do
-  end
-
 end
