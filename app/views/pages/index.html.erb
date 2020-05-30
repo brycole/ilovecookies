@@ -3,6 +3,13 @@
 <h1>Home Page - Display all products marked as homepage yes.</h1>
 
 <div class="wrapper">
+  <div class="d-flex justify-content-around">
+    <% @categories.each do |category| %>
+      <div class="btn btn-primary">
+        <%= category.name %>
+      </div>
+  <% end %>
+  </div>
   <div class="product-cards-grid">
     <% @categories.each do |category| %>
       <% category.subcategories.each do |subcategory| %>
