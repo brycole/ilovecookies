@@ -1,0 +1,18 @@
+<h1>I Love Cookies!</h1>
+
+<h1>Home Page - Display all products marked as homepage yes.</h1>
+
+<div class="wrapper">
+  <div class="product-cards-grid">
+    <% @categories.each do |category| %>
+      <% category.subcategories.each do |subcategory| %>
+        <% subcategory.products.each do |product| %>
+          <div class="product-card d-flex flex-column">
+            <div class="product-name-card"> <%= product.name %> </div>
+            <div> <%= product.description %> </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
