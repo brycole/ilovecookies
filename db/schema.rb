@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_30_144831) do
+ActiveRecord::Schema.define(version: 2020_05_30_150500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,10 +29,9 @@ ActiveRecord::Schema.define(version: 2020_05_30_144831) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
-  create_table "addresses", force: :cascade do |t|
-    t.string "customer_name"
-    t.text "full_address"
-    t.integer "billing_or_shipping"
+  create_table "billing_addresses", force: :cascade do |t|
+    t.string "billing_name"
+    t.text "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -45,6 +44,13 @@ ActiveRecord::Schema.define(version: 2020_05_30_144831) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_categories_on_category_id"
+  end
+
+  create_table "delivery_addresses", force: :cascade do |t|
+    t.string "delivery_name"
+    t.text "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -61,10 +67,12 @@ ActiveRecord::Schema.define(version: 2020_05_30_144831) do
     t.bigint "user_id"
     t.integer "status"
     t.float "total_amount"
-    t.bigint "address_id"
+    t.bigint "billing_address_id"
+    t.bigint "delivery_address_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["address_id"], name: "index_orders_on_address_id"
+    t.index ["billing_address_id"], name: "index_orders_on_billing_address_id"
+    t.index ["delivery_address_id"], name: "index_orders_on_delivery_address_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -97,7 +105,8 @@ ActiveRecord::Schema.define(version: 2020_05_30_144831) do
 
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
-  add_foreign_key "orders", "addresses"
+  add_foreign_key "orders", "billing_addresses"
+  add_foreign_key "orders", "delivery_addresses"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "users"
