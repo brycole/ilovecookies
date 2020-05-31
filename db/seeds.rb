@@ -29,6 +29,7 @@ categories.each_with_index do |category, index|
 end
 
 puts 'Baking the cookies...'
+
 bar_almond = Product.new(
   name: 'Almond Toffee Bar Cookies',
   description: 'Almond Toffee Bar Cookies are an absolutely luscious layer bar cookie – one that looks incredibly elegant but is super easy to make, with just 7 ingredients.',
@@ -37,6 +38,9 @@ bar_almond = Product.new(
   active_status: true,
   category: Category.find_by(name: 'Almond', category: categories[0])
   )
+photo = "https://source.unsplash.com/random/?cookie almond"
+file = URI.open(photo)
+bar_almond.photo.attach(io: file, filename: 'test.jpeg', content_type: 'image/png')
 bar_almond.save
 
 bar_choc = Product.new(
@@ -47,6 +51,9 @@ bar_choc = Product.new(
   active_status: true,
   category: Category.find_by(name: 'Chocolate', category: categories[0])
   )
+photo = "https://source.unsplash.com/random/?cookie chocolate"
+file = URI.open(photo)
+bar_choc.photo.attach(io: file, filename: 'test.jpeg', content_type: 'image/png')
 bar_choc.save
 
 bar_christmas = Product.new(
@@ -57,6 +64,9 @@ bar_christmas = Product.new(
   active_status: true,
   category: Category.find_by(name: 'Christmas', category: categories[0])
   )
+photo = "https://source.unsplash.com/random/?cookie christmas"
+file = URI.open(photo)
+bar_christmas.photo.attach(io: file, filename: 'test.jpeg', content_type: 'image/png')
 bar_christmas.save
 
 bar_lemon = Product.new(
@@ -67,17 +77,21 @@ bar_lemon = Product.new(
   active_status: true,
   category: Category.find_by(name: 'Lemon', category: categories[0])
   )
+photo = "https://source.unsplash.com/random/?cookie lemon"
+file = URI.open(photo)
+bar_lemon.photo.attach(io: file, filename: 'test.jpeg', content_type: 'image/png')
 bar_lemon.save
 
 product_description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi iaculis ex in quam suscipit ultrices."
 adjective = %w[Ultimate Delicious Luscious Delightful Heavenly Mouthwatering Tasty]
-# flavor = %w[Almond Lemon Cherry Christmas Oatmeal Raisin Sugar Fruit Ginger Blueberry]
 price = [1.25, 1.99, 1.5, 1.75, 2, 2.5, 3, 3.25]
 15.times {
   main_cat = categories.sample
   sub_cat = eval("#{main_cat.name.downcase}_cat").sample
   build_name = "#{adjective.sample} #{sub_cat} Cookies"
-  Product.create(
+  photo = "https://source.unsplash.com/random/?cookie " + sub_cat
+  file = URI.open(photo)
+  cookie = Product.new(
     name: build_name,
     description: product_description,
     price: price.sample,
@@ -85,6 +99,6 @@ price = [1.25, 1.99, 1.5, 1.75, 2, 2.5, 3, 3.25]
     active_status: true,
     category: Category.find_by(name: sub_cat, category: main_cat.id)
     )
-  # puts main_cat.name
-  # puts build_name
+  cookie.photo.attach(io: file, filename: 'test.jpeg', content_type: 'image/png')
+  cookie.save
 }
