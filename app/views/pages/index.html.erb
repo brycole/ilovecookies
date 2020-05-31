@@ -2,22 +2,29 @@
 
 <h1>Home Page - Display all products marked as homepage yes.</h1>
 
+
+
 <div class="wrapper">
   <div class="d-flex justify-content-around">
     <% @categories.each do |category| %>
-      <div class="btn btn-primary">
-        <%= category.name %>
-      </div>
+      <%= link_to category_path(category) do %>
+        <div class="btn btn-primary">
+          <%= category.name %>
+        </div>
+      <% end %>
   <% end %>
   </div>
   <div class="product-cards-grid">
     <% @categories.each do |category| %>
-      <% category.subcategories.each do |subcategory| %>
-        <% subcategory.products.each do |product| %>
-          <div class="product-card d-flex flex-column">
-            <div class="product-name-card"> <%= product.name %> </div>
-            <div> <%= product.description %> </div>
-          </div>
+      <% if category.visible_homepage == true %>
+        <% category.subcategories.each do |subcategory| %>
+          <% subcategory.products.each do |product| %>
+            <%= link_to product_path(product) do %>
+              <div class="product-card d-flex flex-column">
+                <div class="product-name-card"> <%= product.name %> </div>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
