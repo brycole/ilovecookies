@@ -85,7 +85,7 @@ bar_lemon.save
 product_description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi iaculis ex in quam suscipit ultrices."
 adjective = %w[Ultimate Delicious Luscious Delightful Heavenly Mouthwatering Tasty]
 price = [1.25, 1.99, 1.5, 1.75, 2, 2.5, 3, 3.25]
-15.times {
+30.times {
   main_cat = categories.sample
   sub_cat = eval("#{main_cat.name.downcase}_cat").sample
   build_name = "#{adjective.sample} #{sub_cat} Cookies"
@@ -101,4 +101,5 @@ price = [1.25, 1.99, 1.5, 1.75, 2, 2.5, 3, 3.25]
     )
   cookie.photo.attach(io: file, filename: 'test.jpeg', content_type: 'image/png')
   cookie.save
+  sleep(2)
 }
