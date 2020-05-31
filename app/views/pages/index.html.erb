@@ -19,10 +19,11 @@
       <% if category.visible_homepage == true %>
         <% category.subcategories.each do |subcategory| %>
           <% subcategory.products.each do |product| %>
-            <div class="product-card d-flex flex-column">
-              <div class="product-name-card"> <%= product.name %> </div>
-              <div> <%= product.description %> </div>
-            </div>
+            <%= link_to product_path(product) do %>
+              <div class="product-card d-flex flex-column">
+                <div class="product-name-card"> <%= product.name %> </div>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
