@@ -1,7 +1,14 @@
 
-
-<%= @product.name %>
-<%= @product.description %>
-<%= @product.price %>
-<%= @product.availability_date %>
+<div class="wrapper d-flex justify-content-center pt-5">
+  <div class="product-large">
+    <%= cl_image_tag @product.photo.key, height: 300, width: 300, crop: :fill %>
+    <div class="product-large-infos">
+      <div>
+        <h2><%= @product.name %></h2>
+        <p><%= @product.description %></p>
+      </div>
+      <h2 class=""><%= @product.price %></h2>
+    </div>
+  </div>
+</div>
 

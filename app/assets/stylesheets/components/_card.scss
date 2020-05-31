@@ -43,3 +43,36 @@
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
+
+.product-large {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  width: 300px
+}
+
+.product-large > img {
+  height: 300px;
+  width: 300px;
+}
+
+.product-large h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.product-large p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.product-large .product-large-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
