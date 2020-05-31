@@ -101,6 +101,4 @@ price = [1.25, 1.99, 1.5, 1.75, 2, 2.5, 3, 3.25]
     )
   cookie.photo.attach(io: file, filename: 'test.jpeg', content_type: 'image/png')
   cookie.save
-  # puts main_cat.name
-  # puts build_name
 }
