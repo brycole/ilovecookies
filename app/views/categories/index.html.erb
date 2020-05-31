@@ -1,8 +1,1 @@
 
-<h1>Categories Page</h1>
-<% @categories.each do |category| %>
-  <div class="card"><%= category.name %></div>
-  <% category.subcategories.each do |category| %>
-    <div> <%= category.name %> </div>
-  <% end %>
-<% end %>

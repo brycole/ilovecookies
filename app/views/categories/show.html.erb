@@ -1,0 +1,13 @@
+<h1><%= @category.name %> Cookies</h1>
+
+
+<div class="product-cards-grid">
+  <% @category.subcategories.each do |subcategory| %>
+    <% subcategory.products.each do |product| %>
+      <div class="product-card d-flex flex-column">
+        <div class="product-name-card"> <%= product.name %> </div>
+        <div> <%= product.description %> </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

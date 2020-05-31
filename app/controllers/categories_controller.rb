@@ -5,4 +5,7 @@ class CategoriesController < ApplicationController
     @categories = Category.where(category_id: nil)
   end
 
+  def show
+    @category = Category.find(params[:id])
+  end
 end
