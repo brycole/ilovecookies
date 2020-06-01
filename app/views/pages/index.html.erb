@@ -1,15 +1,14 @@
-<h1>I Love Cookies!</h1>
-
 <div class="wrapper">
   <div class="d-flex justify-content-around">
     <% @categories.each do |category| %>
       <%= link_to category_path(category) do %>
-        <div class="btn btn-primary">
+        <div class="btn btn-secondary">
           <%= category.name %>
         </div>
       <% end %>
-  <% end %>
+    <% end %>
   </div>
+
   <div class="product-cards-grid">
     <% @categories.each do |category| %>
       <% if category.visible_homepage == true %>
